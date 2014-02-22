@@ -1,7 +1,45 @@
 var Model = {
   initial_page_data: {},
 
+  current_location: null,
+
   set_initial_page_data: function (initial_page_data) {
     Model.initial_page_data = initial_page_data
+  },
+
+  get_bugs_context: function () {
+    bugs = {
+      bugs: Model.initial_page_data['bugs'],
+      type: "Bug"
+    }
+    return bugs
+  },
+
+  get_tasks_context: function () {
+    tasks = {
+      tasks: Model.initial_page_data['tasks'],
+      type: "Task"
+    }
+    return tasks
+  },
+
+  find_task_by_id: function (id) {
+    tasks = Model.initial_page_data['tasks'];
+    for (i=0; i < tasks.length; i++) {
+      if (tasks[i]['id'] == id) {
+        return tasks[i];
+      }
+    }
+    return false
+  },
+
+  find_bug_by_id: function (id) {
+    bugs = Model.initial_page_data['bugs'];
+    for (i=0; i < bugs.length; i++) {
+      if (bugs[i]['id'] == id) {
+        return bugs[i];
+      }
+    }
+    return false
   }
 };

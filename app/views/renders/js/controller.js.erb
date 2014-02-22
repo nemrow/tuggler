@@ -1,5 +1,42 @@
 var Controller = {
   init: function () {
-    Model.body.appendChild()
+    View.set_initial_layout();
+    Controller.activate_dom_interaction();
+  },
+
+  activate_dom_interaction: function () {
+    $('html').on('click', '#open_bugs', function(){
+      View.open_bugs_index();
+    });
+
+    $('html').on('click', '#open_tasks', function(){
+      View.open_tasks_index();
+    });
+
+    $('html').on('click', '#tuggler_back_to_tabs', function(){
+      View.set_initial_layout();
+    });
+
+    $('html').on('click', '.open_indi_bug_or_task', function(){
+      var data = $(this).data();
+      View.open_indi_bug_or_task(data);
+    });
+
+    $('html').on('click', '#tuggler_back_btn', function(){
+      var location = Model.current_location;
+      if (location == 'bug') {
+        View.open_bugs_index();
+      } else if (location == "task") {
+        View.open_tasks_index();
+      };
+    });
+
+    $('html').on('click', '#tuggler_new_Bug', function(){
+      View.open_new_bug();
+    });
+
+    $('html').on('click', '#tuggler_new_Task', function(){
+      View.open_new_task();
+    });
   }
 };

@@ -1,11 +1,262 @@
-// dark_green: #1b4142
+/* full_bg: #012b2d */
+
+/* Basics */
 
 .tuggler_container{
+  color: #8ed0dc;
+  font-size: 20px;
   position: fixed;
   top: 10px;
-  right: 0px;
+  right: 10px;
   z-index: 9999999;
 }
+
+.tuggler_container h1{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+}
+
+.tuggler_container h2, .tuggler_container button{
+  font-family: Arial, Helvetica, sans-serif;
+  color: #8ed0dc;
+  font-size: 20px;
+}
+
+.tuggler_container p{
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #8ed0dc;
+}
+
+.tuggler_container .tuggler_shell{
+  width: 345px;
+  padding: 25px;
+}
+
+.tuggler_shell h1.tuggler_title{
+  position: relative;
+  top: 0px;
+  left: 0px;
+  margin: 0 0 20px 0;
+}
+
+.tuggler_icon{
+  background-image: url('tuggler_sprite.png');
+}
+
+.tuggler_icon_tabs{
+  width: 16px;
+  height: 15px;
+  background-position: 0px -25px;
+}
+
+.tuggler_icon_tabs:hover{
+  background-position: 0px 0px;
+}
+
+.tuggler_nav_icon_in_tab{
+  position: absolute;
+  top: 13px;
+  left: 13px;
+}
+
+.tuggler_icon_bugs{
+  background-position: 0 -125px;
+  width: 18px;
+  height: 18px;
+}
+
+.tuggler_icon_tasks{
+  width: 16px;
+  height: 12px;
+  background-position: -50px -75px;
+}
+
+.tuggler_icon_exit{
+  width: 16px;
+  height: 14px;
+  background-position: -50px -25px;
+}
+
+.tuggler_nav_icon_in_people{
+  position: absolute;
+  top: 10px;
+  left: 4px;
+}
+
+.tuggler_icon_people{
+  width: 29px;
+  height: 17px;
+  background-position: 0 -75px;
+}
+
+.tuggler_nav_icon_in_exit{
+  position: absolute;
+  top: 8px;
+  left: 6px;
+}
+
+.tuggler_icon_bugs:hover{
+  background-position: 0 -100px;
+}
+
+.tuggler_in_tab_title{
+  text-align: center;
+  margin: 9px auto 0 auto;
+}
+
+.tuggler_icon_back{
+  width: 20px;
+  height: 12px;
+  background-position: -25px 0;
+  cursor: pointer;
+}
+
+.tuggler_icon_back:hover{
+  background-position: -25px -25px;
+}
+
+.tuggler_shell .tuggler_nav_icon_right{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.tuggler_container .inner_glow{
+  -webkit-box-shadow: inset 0 0 8px #888;
+  -moz-box-shadow: inset 0 0 8px #888;
+  box-shadow: inset 0 0 8px #888;
+}
+
+.tuggler_container .button p:hover{
+  color: #fff;
+}
+
+.tuggler_container .button{
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.tuggler_container .button_1{
+  width:150px;
+  height:40px;
+}
+
+.tuggler_container .button_full_width{
+  width: 100%;
+  height: 40px;
+}
+
+.tuggler_container .tuggler_drop_shadow {
+  box-shadow: 0px 1px 2px #000;
+}
+
+.tuggler_container .tuggler_inner_glow {
+  box-shadow: 0px 1px 2px #000;
+}
+
+/* main container bg */
+.tuggler_container .bg_1{
+  background-color: #012b2d;
+}
+
+/* button / tab bg */
+.tuggler_container .bg_2{
+  background-color: #1b4142;
+}
+
+/* button / tab hover bg*/
+.tuggler_container .bg_3{
+  background-color: #345557;
+}
+
+/* button / tab green bg*/
+.tuggler_container .bg_4{
+  background-color: #01803c;
+}
+
+/* button / tab green hover bg*/
+.tuggler_container .bg_5{
+  background-color: #01b846;
+}
+
+/* form input */
+.tuggler_container input[type=text], .tuggler_container textarea{
+  background-color: #011a1b;
+  color: #8d9393;
+  outline: none;
+  border: none;
+  -webkit-box-shadow: inset 0 0 8px #000;
+  -moz-box-shadow: inset 0 0 8px #000;
+  box-shadow: inset 0 0 8px #000;
+  width: 100%;
+  font-size: 14px;
+  padding: 5px;
+}
+
+.tuggler_container .tuggler_title_input{
+  height: 40px;
+  font-size: 14px;
+}
+
+.tuggler_container .input[type="text"]:hover{
+  color: #fff;
+}
+
+
+/* Nav Icons */
+.tuggler_shell .nav_icon_tabs{
+}
+
+/* Tabs */
+
+
+/* FUCKING EVERYTHING! */
+
+.tuggler_container .own_line_button_with_space{
+  clear: both;
+  margin: 10px 0;
+}
+
+.tuggler_full_width_button_cluster_shell{
+  width: 100%;
+}
+
+.tuggler_full_width_button_cluster_shell .tuggler_indi_button_in_full_cluster{
+  height: 40px;
+  margin: 0px;
+  position: relative;
+  width: 100%;
+}
+
+.tuggler_full_width_button_cluster_shell .tuggler_indi_button_in_full_cluster .thing_name_for_button{
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  margin: 12px;
+}
+
+.tuggler_full_width_button_cluster_shell .tuggler_indi_button_in_full_cluster .thing_owner_for_button{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  margin: 12px;
+}
+
+.tuggler_container .tuggler_sneak_peak_screenshot{
+  width: 100px;
+  height: 50px;
+}
+
+.tuggler_container .tuggler_comments_section{
+  max-height: 300px;
+}
+
+.tuggler_container .tuggler_comments_section span{
+  font-style: italic;
+}
+
 
 .tuggle_tab{
   background-color: #1b4142;

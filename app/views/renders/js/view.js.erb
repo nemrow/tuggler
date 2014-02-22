@@ -1,9 +1,104 @@
 var View = {
   head: function () {
-    return $('head')
+    return $('head');
   },
 
   body: function () {
-    return $('body')
+    return $('body');
+  },
+
+  html: function () {
+    return $('html');
+  },
+
+  tuggler_container: function () {
+    return $('#tuggler_container')
+  },
+
+  set_initial_layout: function () {
+    var container = View.container();
+    View.body().append(container);
+    tabs = View.tabs();
+    View.tuggler_container().html(tabs);
+  },
+
+  container: function () {
+    var container = View.get_hsb_template("container");
+    return container
+  },
+
+  tabs: function () {
+    var tabs_layout = View.get_hsb_template("tabs");
+    return tabs_layout;
+  },
+
+  new_task: function () {
+    var new_task_layout = View.get_hsb_template("new_task");
+    return new_task_layout;
+  },
+
+  new_bug: function () {
+    var new_bug_layout = View.get_hsb_template("new_bug");
+    return new_bug_layout;
+  },
+
+  bugs_index: function () {
+    var bugs_layout = View.get_hsb_template("bug_task_index");
+    return bugs_layout;
+  },
+
+  tasks_index: function () {
+    var tasks_layout = View.get_hsb_template("bug_task_index");
+    return tasks_layout;
+  },
+
+  task_or_bug: function () {
+    tob_layout = View.get_hsb_template("show_bug_or_task");
+    return tob_layout;
+  },
+
+  get_hsb_template: function (id) {
+    var source = $("#"+id).html();
+    var template = Handlebars.compile(source);
+    return template;
+  },
+
+  open_new_task: function () {
+    var new_task = View.new_task();
+    Model.current_location = "task"
+    View.tuggler_container().html(new_task());
+  },
+
+  open_new_bug: function () {
+    var new_bug = View.new_bug();
+    Model.current_location = "bug"
+    View.tuggler_container().html(new_bug());
+  },
+
+  open_bugs_index: function () {
+    var context = Model.get_bugs_context();
+    var bugs = View.bugs_index(context);
+    View.tuggler_container().html(bugs(context));
+  },
+
+  open_tasks_index: function () {
+    var context = Model.get_tasks_context();
+    var tasks = View.tasks_index(context);
+    View.tuggler_container().html(tasks(context));
+  },
+
+  open_indi_bug_or_task: function (tob_data) {
+    var page_data = Model.initial_page_data;
+    if (tob_data['type'] == "bug") {
+      var bug = Model.find_bug_by_id(tob_data['id']);
+      var bug_layout = View.task_or_bug();
+      Model.current_location = "bug";
+      View.tuggler_container().html(bug_layout(bug));
+    } else if (tob_data['type'] == 'task') {
+      var task = Model.find_task_by_id(tob_data['id']);
+      var task_layout = View.task_or_bug();
+      Model.current_location = "task"
+      View.tuggler_container().html(task_layout(task));
+    }
   }
 };

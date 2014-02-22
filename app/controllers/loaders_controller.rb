@@ -3,11 +3,10 @@ class LoadersController < ApplicationController
     user = User.find(params[:user_id])
 
     project = Project.find_by_host_name(params[:host_name])
-
     if project
-      page = Project.pages.where(:route => params[:routes])
+      page = project.pages.where(:route => params[:route]).first
       if page
-        hash_data = Page.get_full_page_hash(page, user)
+        hash_data = page.get_full_page_hash(user)
       else
         hash_data = {:status => 'blankPage'}
       end

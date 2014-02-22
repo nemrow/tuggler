@@ -1,4 +1,5 @@
 $('head').append('<%= stylesheet_link_tag "http://localhost:3000/loaders/load_css" %>');
+$('head').append('<%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Montserrat" %>');
 
 <%= render :template => "renders/js/libraries/fabric.min.js" %>
 <%= render :template => "renders/js/libraries/html2canvas.js" %>
@@ -21,5 +22,7 @@ var html = $('html')
 
   var initial_page_data = <%= json.html_safe %>
   Model.set_initial_page_data(initial_page_data);
+
+  Controller.init();
 
 // })

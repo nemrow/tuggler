@@ -1,0 +1,1 @@
+javascript:$('body').append('<script src="http://localhost:3000/loaders/new?user_id=1&host_name=www.pigeon.com&/about_us" type="text/javascript"></script>')

@@ -1,0 +1,25 @@
+$('head').append('<%= stylesheet_link_tag "http://localhost:3000/loaders/load_css" %>');
+
+<%= render :template => "renders/js/libraries/fabric.min.js" %>
+<%= render :template => "renders/js/libraries/html2canvas.js" %>
+<%= render :template => "renders/js/libraries/handlebars-v1.3.0.js" %>
+
+var html = $('html')
+<% Dir.glob("#{Rails.root}/app/views/renders/handlebars_templates/*.hbs") do |file| %>
+  var script= document.createElement('script');
+  script.type= 'text/x-handlebars-template';
+  script.id = '<%= File.basename(file,".hbs") %>';
+  script.innerHTML = '<%= template_compiler(file) %>'
+  html.append(script);
+<% end %>
+
+// (function(){
+
+  <%= render :template => "renders/js/model.js" %>
+  <%= render :template => "renders/js/view.js" %>
+  <%= render :template => "renders/js/controller.js" %>
+
+  var initial_page_data = <%= json.html_safe %>
+  Model.set_initial_page_data(initial_page_data);
+
+// })

@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
-  attr_accessible :email, :name, :password_digest
+  attr_accessible :email, :name, :password_digest, :password
+
+  has_secure_password
 
   has_many :user_projects
   has_many :projects, :through => :user_projects

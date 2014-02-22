@@ -1,4 +1,12 @@
 Tuggler::Application.routes.draw do
+  get "test_views/bugs"
+
+  get "test_views/tasks"
+
+  get "sessions/create"
+
+  get "sessions/destroy"
+
   get "screenshots/create"
 
   get "screenshots/index"
@@ -31,8 +39,12 @@ Tuggler::Application.routes.draw do
 
   get "projects/show"
 
+  get "loaders/new"
+
+  get "loaders/load_css"
+
   resources :users
   
-  # root :to => 'welcome#index'
+  root :to => 'users#new'
 
 end

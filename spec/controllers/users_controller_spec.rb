@@ -14,5 +14,4 @@ describe UsersController do
       User.all.count.should eq(user_count + 1)
     end
   end
-
 end

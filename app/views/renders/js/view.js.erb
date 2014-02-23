@@ -93,6 +93,7 @@ var View = {
       var bug = Model.find_bug_by_id(tob_data['id']);
       var bug_layout = View.task_or_bug();
       Model.current_location = "bug";
+      console.log(bug)
       View.tuggler_container().html(bug_layout(bug));
     } else if (tob_data['type'] == 'task') {
       var task = Model.find_task_by_id(tob_data['id']);
@@ -102,9 +103,12 @@ var View = {
     }
   },
 
-  refresh_bug_index: function (data) {
-    console.log(data)
-    Model.initial_page_data = data;
+  refresh_bug_index: function () {
     View.open_bugs_index();
-  }
+  },
+
+  refresh_task_index: function () {
+    debugger
+    View.open_tasks_index();
+  } 
 };

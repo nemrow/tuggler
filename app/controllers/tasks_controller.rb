@@ -9,12 +9,15 @@ class TasksController < ApplicationController
   end
 
   def create
+    user = User.find(params[:user_id])
     project = Project.find(params[:project_id])
-    page = project.pages.where(:route => params[:page_route]).first
+    page = project.pages.where(:route => params[:route]).first
     task = Task.create(params[:task])
     page.tasks << task
 
-    render :json => task.to_json
+    page_data = page.get_full_page_hash(user)
+
+    render :json => "#{params[:callback]}(#{page_data.to_json})"
   end
 
   def show

@@ -46,13 +46,34 @@ var Controller = {
       var project_id = Model.project_id();
       var route = Model.page_route();
       var params = {
-        description: description,
-        title: title,
+        bug: {
+          description: description,
+          title: title
+        },
         user_id: user_id,
         project_id: project_id,
         route: route
       }
-      Controller.get_api("/bug/create", params, "View.refresh_bug_index")
+      Controller.get_api("/bug/create", params, View.refresh_bug_index)
+    });
+
+    $('html').on('click', '#tuggler_submit_new_task', function(){
+      debugger
+      var description = $('#tuggler_input_description').val();
+      var title = $('#tuggler_input_title').val();
+      var user_id = Model.user_id();
+      var project_id = Model.project_id();
+      var route = Model.page_route();
+      var params = {
+        task: {
+          description: description,
+          title: title
+        },
+        user_id: user_id,
+        project_id: project_id,
+        route: route
+      }
+      Controller.get_api("/tasks/create", params, View.refresh_task_index)
     });
   },
 
@@ -65,10 +86,11 @@ var Controller = {
       contentType: "application/json",
       dataType: 'jsonp',
       success: function(json) {
-        console.log(json);
+        Model.initial_page_data = json;
+        callback();
       },
       error: function(e) {
-        alert('s')
+        alert('something went wrong')
       }
     });
   }

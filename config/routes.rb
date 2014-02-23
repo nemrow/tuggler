@@ -21,7 +21,7 @@ Tuggler::Application.routes.draw do
 
   get "tasks/index"
 
-  get "tasks/create"
+  match "tasks/create"
 
   get "tasks/show"
 

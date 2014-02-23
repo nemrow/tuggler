@@ -27,7 +27,7 @@ Tuggler::Application.routes.draw do
 
   get "bug/index"
 
-  get "bug/create"
+  match "bug/create"
 
   get "bug/show"
 

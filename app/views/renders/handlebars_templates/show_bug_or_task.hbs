@@ -1,0 +1,25 @@
+<div class="tuggler_shell bg_1">
+  <p class="indi_thing_title">Move Logo</p>
+  <div class="tuggler_nav_icon_right tuggler_icon_back tuggler_icon" id="tuggler_back_btn"></div>
+  <hr class="tuggler_hr">
+  <p class="indi_thing_description">{{description}}</p>
+  <hr class="tuggler_hr">
+  <img src="" class="tuggler_sneak_peak_screenshot">
+  <hr class="tuggler_hr">
+  <p>Assigned to: Jordan<p>
+    <hr class="tuggler_hr">
+  <div class="tuggler_comments_section">
+
+    {{#each comments}}
+
+    <p>{{content}}<span>-Jordan</span></p>
+    <hr>
+
+    {{/each}}
+
+    <textarea placeholder="Comment"></textarea>
+  </div>
+  <button class="button button_1 bg_2 own_line_button_with_space">Comment</button><br>
+  <button class="button button_1 bg_2 own_line_button_with_space">Status</button><br>
+  <button class="button button_1 bg_4 own_line_button_with_space">Save</button>
+</div>

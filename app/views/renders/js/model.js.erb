@@ -1,7 +1,24 @@
 var Model = {
   initial_page_data: {},
 
+  api_base: "http://localhost:3000",
+
   current_location: null,
+
+  user_id: function () {
+    var user_id = Model.initial_page_data['user']['id'];
+    return user_id;
+  },
+
+  project_id: function () {
+    var project_id = Model.initial_page_data['project']['id'];
+    return project_id;
+  },
+
+  page_route: function () {
+    var page_route = Model.initial_page_data['page']['route'];
+    return page_route;
+  },
 
   set_initial_page_data: function (initial_page_data) {
     Model.initial_page_data = initial_page_data

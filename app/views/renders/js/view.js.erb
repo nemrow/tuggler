@@ -100,5 +100,11 @@ var View = {
       Model.current_location = "task"
       View.tuggler_container().html(task_layout(task));
     }
+  },
+
+  refresh_bug_index: function (data) {
+    console.log(data)
+    Model.initial_page_data = data;
+    View.open_bugs_index();
   }
 };

@@ -38,5 +38,38 @@ var Controller = {
     $('html').on('click', '#tuggler_new_Task', function(){
       View.open_new_task();
     });
+
+    $('html').on('click', '#tuggler_submit_new_bug', function(){
+      var description = $('#tuggler_input_description').val();
+      var title = $('#tuggler_input_title').val();
+      var user_id = Model.user_id();
+      var project_id = Model.project_id();
+      var route = Model.page_route();
+      var params = {
+        description: description,
+        title: title,
+        user_id: user_id,
+        project_id: project_id,
+        route: route
+      }
+      Controller.get_api("/bug/create", params, "View.refresh_bug_index")
+    });
+  },
+
+  get_api: function (route, params, callback) {
+    $.ajax({
+      type: 'POST',
+      url: Model.api_base + route,
+      async: false,
+      data: params,
+      contentType: "application/json",
+      dataType: 'jsonp',
+      success: function(json) {
+        console.log(json);
+      },
+      error: function(e) {
+        alert('s')
+      }
+    });
   }
 };

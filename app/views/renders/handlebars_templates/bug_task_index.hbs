@@ -1,0 +1,27 @@
+<div class="tuggler_shell bg_1">
+  <h1 class="tuggler_title">{{type}}</h1>
+  <div class="tuggler_nav_icon_right tuggler_icon_tabs tuggler_icon" id="tuggler_back_to_tabs"></div>
+  <button class="button_full_width bg_4 button tuggler_drop_shadow" id="tuggler_new_{{type}}">Create {{type}}</button>
+  <hr class="tuggler_hr">
+  <div class="tuggler_full_width_button_cluster_shell tuggler_drop_shadow">
+
+    {{#each bugs}}
+
+      <div class="tuggler_indi_button_in_full_cluster inner_glow open_indi_bug_or_task" data-id="{{id}}" data-type="bug">
+        <p class="thing_name_for_button">{{title}}</p>
+        <p class="thing_owner_for_button">{{assigned_to_id}}</p>
+      </div>
+      
+    {{/each}}
+
+    {{#each tasks}}
+
+      <div class="tuggler_indi_button_in_full_cluster inner_glow open_indi_bug_or_task" data-id="{{id}}" data-type="task">
+        <p class="thing_name_for_button">{{title}}</p>
+        <p class="thing_owner_for_button">{{assigned_to_id}}</p>
+      </div>
+      
+    {{/each}}
+
+  </div>
+</div>

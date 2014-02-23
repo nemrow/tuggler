@@ -113,7 +113,7 @@ var Controller = {
   display_screenshot: function (screenShotCanvas) {
     $('#screenshot_container').html(screenShotCanvas);
     Controller.load_drawing_canvas();
-    $('#screenshot_container').append('<div class="save_screenshot">OK</div>')
+    $('#screenshot_container').append('<div class="save_screenshot button_1"><img src="'+Model.api_base+'/assets/tuggler-check.png"></div>')
     $.fancybox({
         href: '#screenshot_container'
     });
@@ -148,7 +148,8 @@ var Controller = {
     $('#screenshot_container').append(drawingCanvas);
     drawingCanvas = new fabric.Canvas(drawingCanvas);
     drawingCanvas.isDrawingMode = true;
-
+    drawingCanvas.freeDrawingBrush.color = "#f4a100"
+    drawingCanvas.freeDrawingBrush.width = 10;
     window_height = window.height
     // place back to isDrawingMode = false when done with drawing
   },

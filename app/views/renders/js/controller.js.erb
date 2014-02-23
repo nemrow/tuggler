@@ -85,6 +85,18 @@ var Controller = {
     $('html').on('click', '.save_screenshot', function(e){
       Controller.save_screenshot();
     });
+
+    $('html').on('click', '.open_full_screenshot_view', function(e){
+      e.preventDefault();
+      View.tuggler_container().hide();
+      var image_url = $(this).attr('data-image-url')
+      $.fancybox({
+        href: image_url,
+        afterClose: function() {
+          View.tuggler_container().show();
+        }
+      });
+    });
   },
 
   save_screenshot: function () {

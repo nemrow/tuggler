@@ -280,3 +280,27 @@
   width: 28px;
   height: 28px;
 }
+
+.screenshot_container{
+  position: relative;
+  display: none;
+}
+
+#screenShotCanvas{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.drawingCanvas{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.save_screenshot{
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 30px;
+}

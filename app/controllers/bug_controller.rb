@@ -13,6 +13,12 @@ class BugController < ApplicationController
     project = Project.find(params[:project_id])
     page = project.pages.where(:route => params[:route]).first
     bug = Bug.create(params[:bug])
+
+    if params[:screenshot]
+      screenshot = Screenshot.build_screenshot(params[:screenshot])
+      bug.screenshots << screenshot
+    end
+
     page.bugs << bug
 
     page_data = page.get_full_page_hash(user)

@@ -5,6 +5,8 @@ var Model = {
 
   current_location: null,
 
+  global_pic: null,
+
   user_id: function () {
     var user_id = Model.initial_page_data['user']['id'];
     return user_id;
@@ -18,6 +20,11 @@ var Model = {
   page_route: function () {
     var page_route = Model.initial_page_data['page']['route'];
     return page_route;
+  },
+
+  project_members: function () {
+    project_members = Model.initial_page_data['project_members'];
+    return project_members;
   },
 
   set_initial_page_data: function (initial_page_data) {

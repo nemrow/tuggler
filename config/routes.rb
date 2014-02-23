@@ -7,7 +7,7 @@ Tuggler::Application.routes.draw do
 
   get "sessions/destroy"
 
-  get "screenshots/create"
+  match "screenshots/create"
 
   get "screenshots/index"
 
@@ -42,6 +42,7 @@ Tuggler::Application.routes.draw do
   get "loaders/new"
 
   get "loaders/load_css"
+  get "loaders/load_fancybox_css"
 
   resources :users
   

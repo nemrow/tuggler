@@ -50,6 +50,7 @@ var Controller = {
           description: description,
           title: title
         },
+        screenshot: Model.global_pic,
         user_id: user_id,
         project_id: project_id,
         route: route
@@ -58,7 +59,6 @@ var Controller = {
     });
 
     $('html').on('click', '#tuggler_submit_new_task', function(){
-      debugger
       var description = $('#tuggler_input_description').val();
       var title = $('#tuggler_input_title').val();
       var user_id = Model.user_id();
@@ -69,17 +69,59 @@ var Controller = {
           description: description,
           title: title
         },
+        screenshot: Model.global_pic,
         user_id: user_id,
         project_id: project_id,
         route: route
       }
       Controller.get_api("/tasks/create", params, View.refresh_task_index)
     });
+
+    $('html').on('click', '#tuggler_take_screenshot', function(e){
+      e.preventDefault();
+      Controller.take_screenshot();
+    });
+
+    $('html').on('click', '.save_screenshot', function(e){
+      Controller.save_screenshot();
+    });
+  },
+
+  save_screenshot: function () {
+    Controller.combine_canvases();
+    $.fancybox.close();
+    View.tuggler_container().show();
+    // 'pic' becomes a global variable. fuck it. 
+    Model.global_pic = combinedCanvases.toDataURL('img/png');
+    View.display_just_taken_screenshot();
+  },
+
+  take_screenshot: function () {
+    View.tuggler_container().hide();
+
+    View.insert_screenshot_container();
+
+    html2canvas(document.body, {
+      onrendered: function(canvas) {
+        var screenShotCanvas = canvas;
+        screenShotCanvas.id = 'screenShotCanvas';
+        Controller.display_screenshot(screenShotCanvas);
+      }
+    });
+  },
+
+  display_screenshot: function (screenShotCanvas) {
+    $('#screenshot_container').html(screenShotCanvas);
+    Controller.load_drawing_canvas();
+    $('#screenshot_container').append('<div class="save_screenshot">OK</div>')
+    $.fancybox({
+        href: '#screenshot_container'
+    });
   },
 
   get_api: function (route, params, callback) {
     $.ajax({
-      type: 'POST',
+      type: "POST",
       url: Model.api_base + route,
       async: false,
       data: params,
@@ -93,5 +135,41 @@ var Controller = {
         alert('something went wrong')
       }
     });
+  },
+
+  load_drawing_canvas: function () {
+    var screenShotCanvas = $('#screenShotCanvas');
+    var drawingCanvas = document.createElement('canvas');
+    drawingCanvas.id = 'drawingCanvas';
+    drawingCanvas.class = 'drawing_canvas';
+    drawingCanvas.width = screenShotCanvas.attr('width');
+    drawingCanvas.height = screenShotCanvas.attr('height');
+    console.log(drawingCanvas);
+    $('#screenshot_container').append(drawingCanvas);
+    drawingCanvas = new fabric.Canvas(drawingCanvas);
+    drawingCanvas.isDrawingMode = true;
+
+    window_height = window.height
+    // place back to isDrawingMode = false when done with drawing
+  },
+
+  combine_canvases: function () {
+    combinedCanvases = document.createElement('canvas');
+    combinedCanvases.id = 'combinedCanvases';
+    combinedCanvases.style.display = 'none';
+
+    var screenShotCanvas = document.getElementById('screenShotCanvas');
+    var drawingCanvas = document.getElementById('drawingCanvas');
+    var canvasWidth = screenShotCanvas.width;
+    var canvasHeight = screenShotCanvas.height;
+
+    combinedCanvases.width = canvasWidth;
+    combinedCanvases.height = canvasHeight;
+
+    combinedCanvasesContext = combinedCanvases.getContext('2d');
+    combinedCanvasesContext.drawImage(screenShotCanvas, 0, 0);
+    combinedCanvasesContext.drawImage(drawingCanvas, 0, 0);
+
+    document.body.appendChild(combinedCanvases);
   }
 };

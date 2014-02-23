@@ -20,4 +20,8 @@ class LoadersController < ApplicationController
   def load_css
     render :template => 'renders/css/tuggler.css'
   end
+
+  def load_fancybox_css
+    render :template => 'renders/js/libraries/fancybox/jquery.fancybox.css'
+  end
 end

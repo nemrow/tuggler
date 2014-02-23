@@ -13,6 +13,12 @@ class TasksController < ApplicationController
     project = Project.find(params[:project_id])
     page = project.pages.where(:route => params[:route]).first
     task = Task.create(params[:task])
+
+    if params[:screenshot]
+      screenshot = Screenshot.build_screenshot(params[:screenshot])
+      task.screenshots << screenshot
+    end
+
     page.tasks << task
 
     page_data = page.get_full_page_hash(user)

@@ -11,6 +11,7 @@ class Page < ActiveRecord::Base
       :bugs => self.bugs.map{|bug| bug.get_full_bug_content},
       :tasks => self.tasks.map{|task| task.get_full_task_content},
       :project => self.project,
+      :project_members => self.project.users,
       :page => self,
       :user => user
     }

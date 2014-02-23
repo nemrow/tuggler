@@ -32,6 +32,11 @@ var View = {
     return tabs_layout;
   },
 
+  screenshot_container: function () {
+    var screenshot_container_layout = View.get_hsb_template("screenshot_container");
+    return screenshot_container_layout;
+  },
+
   new_task: function () {
     var new_task_layout = View.get_hsb_template("new_task");
     return new_task_layout;
@@ -64,15 +69,23 @@ var View = {
   },
 
   open_new_task: function () {
+    context = {
+      members: Model.project_members()
+    }
     var new_task = View.new_task();
     Model.current_location = "task"
-    View.tuggler_container().html(new_task());
+    View.tuggler_container().html(new_task(context));
   },
 
   open_new_bug: function () {
     var new_bug = View.new_bug();
     Model.current_location = "bug"
     View.tuggler_container().html(new_bug());
+  },
+
+  insert_screenshot_container: function () {
+    var screenshot_container = View.screenshot_container();
+    View.body().append(screenshot_container());
   },
 
   open_bugs_index: function () {
@@ -108,7 +121,19 @@ var View = {
   },
 
   refresh_task_index: function () {
-    debugger
     View.open_tasks_index();
-  } 
+  },
+
+  refresh_bug_or_task: function () {
+    console.log('hit');
+  },
+
+  display_just_taken_screenshot: function () {
+    $('#tuggler_take_screenshot').after('<img src="'+Model.global_pic+'">')
+    $('#tuggler_take_screenshot').remove();
+  },
+
+  image_data_to_image: function () {
+    Model.global_pic
+  }
 };

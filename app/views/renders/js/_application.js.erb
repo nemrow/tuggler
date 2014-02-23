@@ -1,9 +1,11 @@
 $('head').append('<%= stylesheet_link_tag "http://localhost:3000/loaders/load_css" %>');
+$('head').append('<%= stylesheet_link_tag "http://localhost:3000/loaders/load_fancybox_css" %>');
 $('head').append('<%= stylesheet_link_tag "http://fonts.googleapis.com/css?family=Montserrat" %>');
 
 <%= render :template => "renders/js/libraries/fabric.min.js" %>
 <%= render :template => "renders/js/libraries/html2canvas.js" %>
 <%= render :template => "renders/js/libraries/handlebars-v1.3.0.js" %>
+<%= render :template => "renders/js/libraries/fancybox/jquery.fancybox.pack.js" %>
 
 var html = $('html')
 <% Dir.glob("#{Rails.root}/app/views/renders/handlebars_templates/*.hbs") do |file| %>
@@ -15,6 +17,7 @@ var html = $('html')
 <% end %>
 
 // (function(){
+
 
   <%= render :template => "renders/js/model.js" %>
   <%= render :template => "renders/js/view.js" %>
